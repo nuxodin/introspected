@@ -76,11 +76,9 @@ const IntrospectedHandler = {
         return () => target;
       default:
         const info = known.get(target);
-        const obj = create(null);
-        obj.valueOf = function(){ return undefined; };
         return (target[prop] = register(
           info.O,
-          obj,
+          create(null),
           info.$.concat(prop)
         )._);
     }
